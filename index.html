@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quote Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { 
+      background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color:#fff; 
+      font-family:Arial, sans-serif; 
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      margin:0;
+      padding:20px;
+      text-align:center;
+    }
+    .card { 
+      background:rgba(0,0,0,0.3); 
+      padding:40px 30px; 
+      border-radius:20px; 
+      max-width:500px; 
+      backdrop-filter:blur(10px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    }
+    .quote {
+      font-size:24px;
+      font-style:italic;
+      margin-bottom:20px;
+      line-height:1.5;
+    }
+    .author {
+      font-size:18px;
+      margin-bottom:30px;
+      opacity:0.8;
+    }
+    button { 
+      padding:14px 30px; 
+      border-radius:50px; 
+      border:none; 
+      background:#fff; 
+      color:#764ba2; 
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:transform 0.2s;
+    }
+    button:hover {
+      transform:scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="quote" id="quote">Loading quote...</div>
+    <div class="author" id="author"></div>
+    <button onclick="getQuote()">New Quote</button>
+  </div>
+
+<script>
+const quotes = [
+  {text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House"},
+  {text: "First, solve the problem. Then, write the code.", author: "John Johnson"},
+  {text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler"},
+  {text: "Programs must be written for people to read.", author: "Harold Abelson"},
+  {text: "Simplicity is the soul of efficiency.", author: "Austin Freeman"},
+  {text: "Talk is cheap. Show me the code.", author: "Linus Torvalds"}
+];
+
+function getQuote(){
+  let random = Math.floor(Math.random() * quotes.length);
+  document.getElementById('quote').textContent = `"${quotes[random].text}"`;
+  document.getElementById('author').textContent = `- ${quotes[random].author}`;
+}
+
+getQuote();
+</script>
+</body>
+</html>
